@@ -1,0 +1,178 @@
+@import "tailwindcss";
+
+:root,
+[data-theme="dark"] {
+  color-scheme: dark;
+  --bg-app: #0d0f15;
+  --bg-elevated: #141822;
+  --bg-surface: #181d2a;
+  --bg-hover: #1d2333;
+  --bg-selected: rgba(99, 102, 241, 0.15);
+  --bg-selected-border: rgba(129, 140, 248, 0.36);
+  --bg-chip: rgba(255, 255, 255, 0.055);
+  --bg-chip-active: rgba(99, 102, 241, 0.22);
+  --bg-modal-backdrop: rgba(5, 7, 12, 0.72);
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-strong: rgba(255, 255, 255, 0.15);
+  --text-primary: #f3f5fa;
+  --text-secondary: #9aa3b8;
+  --text-muted: #687389;
+  --accent: #818cf8;
+  --accent-strong: #6366f1;
+  --accent-contrast: #ffffff;
+  --folder-tint: #fbbf24;
+  --folder-bg: rgba(251, 191, 36, 0.11);
+  --folder-border: rgba(251, 191, 36, 0.24);
+  --open-tint: #34d399;
+  --open-bg: rgba(52, 211, 153, 0.12);
+  --open-border: rgba(52, 211, 153, 0.28);
+  --dup-tint: #fb923c;
+  --dup-bg: rgba(251, 146, 60, 0.13);
+  --dup-border: rgba(251, 146, 60, 0.28);
+  --danger-tint: #f87171;
+  --danger-bg: rgba(248, 113, 113, 0.14);
+  --highlight-bg: rgba(129, 140, 248, 0.26);
+  --highlight-text: #e0e7ff;
+  --kbd-bg: rgba(255, 255, 255, 0.07);
+  --kbd-border: rgba(255, 255, 255, 0.13);
+  --shadow-elevated: 0 18px 44px -10px rgba(0, 0, 0, 0.65), 0 0 0 1px rgba(255, 255, 255, 0.08);
+}
+
+[data-theme="light"] {
+  color-scheme: light;
+  --bg-app: #ffffff;
+  --bg-elevated: #f8fafc;
+  --bg-surface: #f1f5f9;
+  --bg-hover: #f1f5f9;
+  --bg-selected: rgba(79, 70, 229, 0.085);
+  --bg-selected-border: rgba(79, 70, 229, 0.28);
+  --bg-chip: rgba(15, 23, 42, 0.05);
+  --bg-chip-active: rgba(79, 70, 229, 0.13);
+  --bg-modal-backdrop: rgba(15, 23, 42, 0.42);
+  --border-subtle: rgba(15, 23, 42, 0.085);
+  --border-strong: rgba(15, 23, 42, 0.16);
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #64748b;
+  --accent: #4f46e5;
+  --accent-strong: #4338ca;
+  --accent-contrast: #ffffff;
+  --folder-tint: #b45309;
+  --folder-bg: rgba(245, 158, 11, 0.12);
+  --folder-border: rgba(217, 119, 6, 0.25);
+  --open-tint: #047857;
+  --open-bg: rgba(16, 185, 129, 0.11);
+  --open-border: rgba(5, 150, 105, 0.25);
+  --dup-tint: #c2410c;
+  --dup-bg: rgba(249, 115, 22, 0.11);
+  --dup-border: rgba(234, 88, 12, 0.25);
+  --danger-tint: #dc2626;
+  --danger-bg: rgba(239, 68, 68, 0.11);
+  --highlight-bg: rgba(79, 70, 229, 0.15);
+  --highlight-text: #312e81;
+  --kbd-bg: #f8fafc;
+  --kbd-border: rgba(15, 23, 42, 0.15);
+  --shadow-elevated: 0 20px 48px -12px rgba(15, 23, 42, 0.22), 0 0 0 1px rgba(15, 23, 42, 0.09);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Inter", "SF Pro Text", "Segoe UI", Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: var(--bg-app);
+  color: var(--text-primary);
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+body.surface-popup {
+  width: 580px;
+  height: 590px;
+  overflow: hidden;
+}
+
+body.surface-sidepanel {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+body.surface-preview {
+  min-height: 100vh;
+  background: radial-gradient(circle at 20% 0%, rgba(99, 102, 241, 0.16), transparent 45%),
+    radial-gradient(circle at 80% 100%, rgba(14, 165, 233, 0.12), transparent 45%),
+    var(--bg-elevated);
+}
+
+/* Custom subtle scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-strong);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+.pinpoint-highlight {
+  background-color: var(--highlight-bg);
+  color: var(--highlight-text);
+  border-radius: 3px;
+  padding: 0 1.5px;
+  font-weight: 600;
+}
+
+.pinpoint-kbd {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 4.5px;
+  font-size: 10.5px;
+  font-weight: 500;
+  font-family: inherit;
+  color: var(--text-secondary);
+  background: var(--kbd-bg);
+  border: 1px solid var(--kbd-border);
+  border-radius: 4px;
+  box-shadow: 0 1px 0 var(--kbd-border);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

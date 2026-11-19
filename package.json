@@ -1,0 +1,39 @@
+{
+  "name": "pinpoint-bookmark-search",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Pinpoint — Instant Bookmark, Folder & Chrome Tab Group Search Extension",
+  "scripts": {
+    "dev": "vite",
+    "typecheck": "tsc --noEmit",
+    "icons": "node scripts/generate-icons.mjs",
+    "build": "node scripts/build-extension.mjs --target=all",
+    "build:chrome": "node scripts/build-extension.mjs --target=chrome",
+    "build:firefox": "node scripts/build-extension.mjs --target=firefox",
+    "publish:chrome": "node scripts/publish-cws.mjs",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "dependencies": {
+    "lucide-react": "^0.475.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.0.9",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.2.0",
+    "@types/chrome": "^0.0.308",
+    "@types/node": "^22.13.5",
+    "@types/react": "^19.0.10",
+    "@types/react-dom": "^19.0.4",
+    "@vitejs/plugin-react": "^4.3.4",
+    "fflate": "^0.8.2",
+    "jsdom": "^26.0.0",
+    "tailwindcss": "^4.0.9",
+    "typescript": "^5.7.3",
+    "vite": "^6.2.0",
+    "vitest": "^3.0.7"
+  }
+}
