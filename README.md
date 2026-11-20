@@ -9,6 +9,7 @@
 *Never ask “Where did I save that link, or which Chrome tab folder is it in?” again.*
 
 [![Chrome Web Store](https://img.shields.io/badge/Chrome_Web_Store-Pinpoint-4F46E5?style=for-the-badge&logo=googlechrome&logoColor=white)](https://chromewebstore.google.com/detail/fadblajfeigpjfddhcmipinicihkdjon)
+[![Firefox Add-ons](https://img.shields.io/badge/Firefox_Add--ons-Pinpoint-FF7139?style=for-the-badge&logo=firefoxbrowser&logoColor=white)](https://addons.mozilla.org/en-US/firefox/addon/pinpoint-bookmark-tab-search/)
 [![Manifest V3](https://img.shields.io/badge/Manifest-V3-0EA5E9?style=for-the-badge&logo=chromatic&logoColor=white)](#architecture--how-it-works)
 [![Cross Browser](https://img.shields.io/badge/Chrome_%E2%80%A2_Brave_%E2%80%A2_Arc_%E2%80%A2_Edge_%E2%80%A2_Firefox-10B981?style=for-the-badge)](#quick-start--installation)
 [![Privacy](https://img.shields.io/badge/100%25_Local-Zero_Telemetry-F59E0B?style=for-the-badge)](./PRIVACY_POLICY.md)
@@ -173,8 +174,9 @@ Combine plain keywords across fields (for example, typing `engineering stripe` m
 
 ## 🚀 Quick Start & Installation
 
-### Option A — Chrome Web Store
-Install directly from the **[Chrome Web Store](https://chromewebstore.google.com/detail/fadblajfeigpjfddhcmipinicihkdjon)** *(compatible with Google Chrome, Brave, Arc, Microsoft Edge, and Vivaldi)*.
+### Option A — Official Browser Stores
+- **Chrome / Brave / Arc / Edge**: **[Chrome Web Store](https://chromewebstore.google.com/detail/fadblajfeigpjfddhcmipinicihkdjon)**
+- **Firefox**: **[Firefox Add-ons (AMO)](https://addons.mozilla.org/en-US/firefox/addon/pinpoint-bookmark-tab-search/)**
 
 ### Option B — Build & Load Unpacked from Source
 
