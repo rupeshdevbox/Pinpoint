@@ -6,5 +6,6 @@ export const BRAND = {
   version: '1.0.0',
   shortcutMac: '⌘⇧K',
   shortcutDefault: 'Ctrl+Shift+K',
-  firefoxExtensionId: 'pinpoint-bookmarks@local.extension',
+  shortcutFirefoxDefault: 'Alt+Shift+K',
+  firefoxExtensionId: 'pinpoint@rupeshdevbox.github.io',
 } as const;

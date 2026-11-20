@@ -45,6 +45,17 @@ export function createExtensionManifest(target: ExtensionTarget): Record<string,
   if (target === 'firefox') {
     return {
       ...common,
+      description:
+        'Instantly search saved bookmarks, nested folders, open tabs, and history — and reveal exact saved folder locations.',
+      commands: {
+        _execute_action: {
+          suggested_key: {
+            default: BRAND.shortcutFirefoxDefault,
+            mac: 'Command+Shift+K',
+          },
+          description: 'Open Pinpoint Bookmark & Tab Search',
+        },
+      },
       background: {
         scripts: ['service-worker.js'],
         type: 'module',
@@ -59,7 +70,10 @@ export function createExtensionManifest(target: ExtensionTarget): Record<string,
       browser_specific_settings: {
         gecko: {
           id: BRAND.firefoxExtensionId,
-          strict_min_version: '121.0',
+          strict_min_version: '142.0',
+          data_collection_permissions: {
+            required: ['none'],
+          },
         },
       },
     };

@@ -74,5 +74,13 @@ describe('browserAdapter & createExtensionManifest', () => {
     expect(firefoxManifest.manifest_version).toBe(3);
     expect(firefoxManifest.permissions).not.toContain('tabGroups');
     expect(firefoxManifest.sidebar_action).toBeDefined();
+    const gecko = (
+      firefoxManifest.browser_specific_settings as {
+        gecko: { id: string; strict_min_version: string; data_collection_permissions: { required: string[] } };
+      }
+    ).gecko;
+    expect(gecko.id).toBe('pinpoint@rupeshdevbox.github.io');
+    expect(gecko.strict_min_version).toBe('142.0');
+    expect(gecko.data_collection_permissions.required).toEqual(['none']);
   });
 });

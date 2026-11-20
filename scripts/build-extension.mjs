@@ -51,6 +51,17 @@ function buildManifestObject(target) {
   if (target === 'firefox') {
     return {
       ...common,
+      description:
+        'Instantly search saved bookmarks, nested folders, open tabs, and history — and reveal exact saved folder locations.',
+      commands: {
+        _execute_action: {
+          suggested_key: {
+            default: 'Alt+Shift+K',
+            mac: 'Command+Shift+K',
+          },
+          description: 'Open Pinpoint Bookmark & Tab Search',
+        },
+      },
       background: {
         scripts: ['service-worker.js'],
         type: 'module',
@@ -64,8 +75,11 @@ function buildManifestObject(target) {
       optional_permissions: ['history', 'sessions'],
       browser_specific_settings: {
         gecko: {
-          id: 'pinpoint-bookmarks@local.extension',
-          strict_min_version: '121.0',
+          id: 'pinpoint@rupeshdevbox.github.io',
+          strict_min_version: '142.0',
+          data_collection_permissions: {
+            required: ['none'],
+          },
         },
       },
     };
@@ -138,6 +152,44 @@ function validateBuiltExtension(outDir, manifest) {
   }
 }
 
+function collectSourceFilesForAmoZip(root) {
+  const topLevelFiles = [
+    'package.json',
+    'package-lock.json',
+    'tsconfig.json',
+    'vite.config.ts',
+    'vitest.config.ts',
+    'popup.html',
+    'sidepanel.html',
+    'index.html',
+    'store-studio.html',
+    'README.md',
+    'PRIVACY_POLICY.md',
+    'BUILD_INSTRUCTIONS_AMO.md',
+  ];
+  const includeDirs = ['public', 'scripts', 'src', 'tests'];
+  const entries = {};
+
+  for (const rel of topLevelFiles) {
+    const abs = resolve(root, rel);
+    if (existsSync(abs)) {
+      entries[rel] = new Uint8Array(readFileSync(abs));
+    }
+  }
+
+  for (const dir of includeDirs) {
+    const absDir = resolve(root, dir);
+    if (existsSync(absDir)) {
+      const subEntries = collectFilesForZip(absDir);
+      for (const [subPath, bytes] of Object.entries(subEntries)) {
+        entries[`${dir}/${subPath}`] = bytes;
+      }
+    }
+  }
+
+  return entries;
+}
+
 async function buildTarget(target) {
   const outDir = resolve(rootDir, 'dist', target);
   console.log(`\nBuilding ${target.toUpperCase()} Manifest V3 bundle -> dist/${target}...`);
@@ -186,6 +238,21 @@ async function buildTarget(target) {
       zipped.byteLength / 1024
     ).toFixed(1)} KB)`
   );
+
+  if (target === 'firefox') {
+    const sourceZipPath = resolve(
+      releasesDir,
+      `pinpoint-firefox-source-v${manifest.version}.zip`
+    );
+    const sourceEntries = collectSourceFilesForAmoZip(rootDir);
+    const sourceZipped = zipSync(sourceEntries, { level: 9 });
+    writeFileSync(sourceZipPath, Buffer.from(sourceZipped));
+    console.log(
+      `✓ FIREFOX AMO source archive ready: releases/pinpoint-firefox-source-v${manifest.version}.zip (${(
+        sourceZipped.byteLength / 1024
+      ).toFixed(1)} KB)`
+    );
+  }
 }
 
 async function main() {

@@ -11,7 +11,9 @@
     "build": "node scripts/build-extension.mjs --target=all",
     "build:chrome": "node scripts/build-extension.mjs --target=chrome",
     "build:firefox": "node scripts/build-extension.mjs --target=firefox",
+    "lint:firefox": "addons-linter dist/firefox",
     "publish:chrome": "node scripts/publish-cws.mjs",
+    "publish:firefox": "node scripts/publish-firefox.mjs",
     "test": "vitest run",
     "test:watch": "vitest"
   },
